@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白玉兰科普</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #24302f;
+      --muted: #64706d;
+      --line: #dbe4df;
+      --paper: #fbfaf6;
+      --leaf: #2f6b57;
+      --leaf-dark: #18483a;
+      --petal: #fffdf8;
+      --gold: #c99945;
+      --rose: #ad6471;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(201, 153, 69, .12), transparent 28rem),
+        linear-gradient(180deg, #f6f3ea 0%, var(--paper) 42%, #edf4ef 100%);
+    }
+
+    a {
+      color: var(--leaf-dark);
+      text-underline-offset: .2em;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 480px);
+      gap: 48px;
+      align-items: center;
+      padding: 48px 0 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--leaf-dark);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(46px, 8vw, 92px);
+      line-height: .98;
+      letter-spacing: 0;
+      color: var(--leaf-dark);
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: #40514d;
+      font-size: clamp(18px, 2vw, 23px);
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .fact {
+      border-top: 3px solid var(--gold);
+      padding-top: 12px;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--leaf-dark);
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-media {
+      position: relative;
+      align-self: stretch;
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: 0 26px 60px rgba(31, 52, 44, .22);
+      background: #d8ded5;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .caption-strip {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      left: 18px;
+      padding: 12px 14px;
+      color: #fff;
+      background: rgba(24, 72, 58, .82);
+      border-radius: 4px;
+      font-size: 14px;
+      backdrop-filter: blur(6px);
+    }
+
+    main {
+      padding-bottom: 64px;
+    }
+
+    section {
+      padding: 56px 0;
+      border-top: 1px solid rgba(47, 107, 87, .18);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--leaf-dark);
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      margin: 0;
+      max-width: 760px;
+      color: #40514d;
+      font-size: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .72);
+    }
+
+    .info-item {
+      min-height: 132px;
+      padding: 20px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-item:nth-child(4n) {
+      border-right: 0;
+    }
+
+    .info-item b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--leaf-dark);
+      font-size: 15px;
+    }
+
+    .info-item span {
+      color: #3f4d4a;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .feature {
+      min-height: 190px;
+      padding: 18px;
+      background: var(--petal);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .feature .num {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 18px;
+      color: #fff;
+      background: var(--leaf);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .feature h3 {
+      margin: 0 0 9px;
+      color: var(--leaf-dark);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .story p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      color: #3f4d4a;
+    }
+
+    .callout {
+      padding: 26px;
+      color: var(--leaf-dark);
+      background: #f7efdf;
+      border-left: 6px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 23px;
+      line-height: 1.25;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+      border-radius: 6px;
+      background: #e6ece6;
+    }
+
+    .gallery figure:first-child {
+      grid-row: span 2;
+      min-height: 640px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.025);
+    }
+
+    figcaption {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      left: 14px;
+      padding: 10px 12px;
+      color: #fff;
+      background: rgba(24, 72, 58, .82);
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .note {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, .72);
+      border-radius: 6px;
+    }
+
+    .note h3 {
+      margin: 0 0 12px;
+      color: var(--leaf-dark);
+      font-size: 22px;
+    }
+
+    .note p {
+      margin: 0;
+      color: #3f4d4a;
+    }
+
+    .sources {
+      margin: 0;
+      padding-left: 20px;
+      color: #40514d;
+      columns: 2;
+      column-gap: 42px;
+    }
+
+    .sources li {
+      break-inside: avoid;
+      margin: 0 0 10px;
+    }
+
+    footer {
+      padding: 30px 0 48px;
+      color: var(--muted);
+      border-top: 1px solid rgba(47, 107, 87, .18);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .story,
+      .gallery,
+      .two-col,
+      .section-title {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        gap: 28px;
+      }
+
+      .hero-media,
+      .hero-media img {
+        min-height: 430px;
+      }
+
+      .hero-facts,
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-item:nth-child(4n) {
+        border-right: 1px solid var(--line);
+      }
+
+      .info-item:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .feature-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery figure:first-child {
+        min-height: 420px;
+      }
+
+      .sources {
+        columns: 1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-facts,
+      .info-grid,
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item,
+      .info-item:nth-child(4n),
+      .info-item:nth-child(2n) {
+        border-right: 0;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .hero-media,
+      .hero-media img {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="page hero">
+    <div>
+      <p class="eyebrow">早春枝头的白色信号</p>
+      <h1>白玉兰</h1>
+      <p class="subtitle">
+        白玉兰通常指玉兰、望春玉兰一类白花木兰。这里按常见园林植物
+        <em>Magnolia denudata</em> Desr. 介绍：它花大而洁白，常在叶片展开前开放，是很多城市里最醒目的春天标志。
+      </p>
+      <div class="hero-facts" aria-label="白玉兰速览">
+        <div class="fact"><strong>木兰科</strong><span>木兰属落叶乔木或大型灌木</span></div>
+        <div class="fact"><strong>先花后叶</strong><span>晚冬至早春开花，枝端花朵向上</span></div>
+        <div class="fact"><strong>上海市花</strong><span>象征朝气、向上与纯洁高雅</span></div>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="images/magnolia-denudata-flower.jpg" alt="白玉兰花朵特写">
+      <figcaption class="caption-strip">花朵直立开放，白色至乳白色，常带清香。</figcaption>
+    </figure>
+  </header>
+
+  <main class="page">
+    <section aria-labelledby="basic-title">
+      <div class="section-title">
+        <h2 id="basic-title">基本信息</h2>
+        <p>从分类到观赏价值，白玉兰的身份可以用几个关键词快速建立起来。</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-item"><b>中文名</b><span>白玉兰、玉兰</span></div>
+        <div class="info-item"><b>学名</b><span><em>Magnolia denudata</em> Desr.</span></div>
+        <div class="info-item"><b>英文名</b><span>Yulan magnolia、Lilytree、Jade Lily</span></div>
+        <div class="info-item"><b>科属</b><span>木兰科 Magnoliaceae，木兰属 <em>Magnolia</em></span></div>
+        <div class="info-item"><b>生活型</b><span>落叶乔木或大型灌木</span></div>
+        <div class="info-item"><b>原产地</b><span>中国东部和南部，Kew POWO 记录为中国中南部、中国东南部</span></div>
+        <div class="info-item"><b>常见花期</b><span>晚冬至早春，常先花后叶</span></div>
+        <div class="info-item"><b>主要价值</b><span>园林观赏、城市景观、文化象征，也有药用和环境用途记录</span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="intro-title">
+      <div class="section-title">
+        <h2 id="intro-title">为什么好认</h2>
+        <p>白玉兰的辨识点集中在早春、白花、直立、先花后叶这几个特征上。</p>
+      </div>
+      <div class="feature-list">
+        <article class="feature">
+          <span class="num">01</span>
+          <h3>树形舒展</h3>
+          <p>园林栽培中常形成开展的圆形树冠，也可能呈大型多干灌木状。</p>
+        </article>
+        <article class="feature">
+          <span class="num">02</span>
+          <h3>花大直立</h3>
+          <p>花朵白色至乳白色，有香气，多在枝端向上开放。</p>
+        </article>
+        <article class="feature">
+          <span class="num">03</span>
+          <h3>先开花</h3>
+          <p>晚冬或早春开花时，枝条上常还没有展开的新叶。</p>
+        </article>
+        <article class="feature">
+          <span class="num">04</span>
+          <h3>叶色清亮</h3>
+          <p>叶片深绿色，倒卵形至长圆形，叶背颜色通常更浅。</p>
+        </article>
+        <article class="feature">
+          <span class="num">05</span>
+          <h3>果序醒目</h3>
+          <p>花后可形成褐色聚合果状果序，成熟后能见到鲜红色种皮的种子。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="gallery-title">
+      <div class="section-title">
+        <h2 id="gallery-title">图像观察</h2>
+        <p>看花、看枝、看果，是认识白玉兰最直观的方式。</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="images/magnolia-denudata-branch.jpg" alt="白玉兰花枝与树形">
+          <figcaption>花枝与树形：早春枝条上可见大型白花。</figcaption>
+        </figure>
+        <figure>
+          <img src="images/magnolia-denudata-flower.jpg" alt="白玉兰花朵特写">
+          <figcaption>花朵特写：花被片厚实，白色至乳白色。</figcaption>
+        </figure>
+        <figure>
+          <img src="images/magnolia-denudata-fruit.jpg" alt="白玉兰果实">
+          <figcaption>果实：花后形成聚合果状果序。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="culture-title">
+      <div class="section-title">
+        <h2 id="culture-title">分布与城市文化</h2>
+        <p>白玉兰既是一种植物，也是一种被城市文化持续赋义的春日意象。</p>
+      </div>
+      <div class="story">
+        <div>
+          <p>
+            白玉兰原产中国，是东亚园林中历史悠久的观赏植物。北卡州立大学植物资料称其在中国栽培历史很长，并于 18 世纪传入西方园林。
+          </p>
+          <p>
+            它喜欢全日照至半阴环境，适合湿润、排水良好、富含有机质且略偏酸性的壤土。栽培时应避免长期干旱、积水和强风，早春花期也容易受晚霜影响。
+          </p>
+        </div>
+        <aside class="callout">
+          <strong>上海市花</strong>
+          上海市花于 1986 年经上海市人大常委会审议通过。白玉兰在上海开花早、花朵向上、形象洁白，因此常被解读为朝气、奋发向上、纯洁高雅。
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="tips-title">
+      <div class="section-title">
+        <h2 id="tips-title">观察小贴士</h2>
+        <p>在城市公园或街边看到白花木兰时，可以从以下角度快速判断。</p>
+      </div>
+      <div class="two-col">
+        <article class="note">
+          <h3>看开花时间</h3>
+          <p>如果在晚冬至早春，叶片还没展开，枝头已经布满大型白色直立花，就很符合白玉兰的典型观感。</p>
+        </article>
+        <article class="note">
+          <h3>看生长环境</h3>
+          <p>白玉兰常见于庭院、公园、道路绿化和校园。开阔、有光照、土壤排水好的地方更容易长势良好。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="source-title">
+      <div class="section-title">
+        <h2 id="source-title">资料来源</h2>
+        <p>页面内容整理自植物数据库、园艺资料、上海市公开信息与 Wikimedia Commons 图片资料。</p>
+      </div>
+      <ul class="sources">
+        <li><a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:554678-1">Kew Plants of the World Online：<em>Magnolia denudata</em> Desr.</a></li>
+        <li><a href="https://plants.ces.ncsu.edu/plants/magnolia-denudata/">NC State Extension Gardener Plant Toolbox：Magnolia denudata</a></li>
+        <li><a href="https://tjj.sh.gov.cn/shgl/20180620/0014-216730.html">上海市统计局：上海市市花——白玉兰</a></li>
+        <li><a href="https://lhsr.sh.gov.cn/shhx/20230307/324e29630fd441f19e9af0be53b59e1c.html">上海市绿化和市容管理局：申城春色，玉兰花开</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/Magnolia_denudata">Wikimedia Commons：Magnolia denudata</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page">
+    本介绍由王柏堰在AI协助下完成，版权所有；花朵特写作者 William (Ned) Friedman，授权 CC BY-SA 4.0。其余图片授权信息见对应 Wikimedia Commons 原文件页。
+  </footer>
+</body>
+</html>
